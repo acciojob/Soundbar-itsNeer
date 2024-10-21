@@ -1,12 +1,9 @@
-//your JS code here. If required.
-
 let btns = document.querySelectorAll(".btn");
 let currentAudio = null;
+
 btns.forEach(t => {
-    // console.log(t.innerHTML);
-    let audio = document.createElement("audio");
-    audio.src = `sounds/${t.innerHTML}.mp3`;
-    // console.log(audio);
+    let soundId = t.getAttribute("data-sound");
+    let audio = document.getElementById(soundId);
     
     t.addEventListener("click", (e) => {
         e.preventDefault();
@@ -14,10 +11,9 @@ btns.forEach(t => {
             currentAudio.pause();
             currentAudio.currentTime = 0;
         }
-        currentAudio = audio
+        currentAudio = audio;
         currentAudio.play();
-    })
-    
+    });
 });
 
 let stop = document.querySelector(".stop");
@@ -27,4 +23,4 @@ stop.addEventListener("click", () => {
         currentAudio.pause();
         currentAudio.currentTime = 0;
     }
-})
+});
